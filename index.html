@@ -2,10 +2,31 @@
   <head>
     <meta charset="utf-8">
     <title> jQuery exercises </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
   <body>
+    <div id ="carousel-outer">
+        <a class="previousLink" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        <div id="carousel-inner">
+           <div id="carousel-controls">
+                <button type="button" class="btn-active"></button>
+                <button type="button" class="btn-inactive"></button>
+                <button type="button" class="btn-inactive"></button>
+                <button type="button" class="btn-inactive"></button>
+                <button type="button" class="btn-inactive"></button>
+            </div>
+            <ul>
+                <li><img class="active-image" src ="images/photo_1.jpg" alt="camera"/></li>
+                <li><img class="inactive-image" src ="images/photo_2.jpg" alt="camera"/></li>
+                <li><img class="inactive-image" src ="images/photo_3.jpg" alt="camera"/></li>
+                <li><img class="inactive-image" src ="images/photo_4.jpg" alt="camera"/></li>
+                <li><img class="inactive-image" src ="images/photo_5.jpg" alt="camera"/></li>           
+            </ul>
+        </div>
+        <a class="nextLink" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </div>
     <script type="text/javascript" src="js/scripts.js"></script>
   </body>
 </html>
