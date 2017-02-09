@@ -1,52 +1,46 @@
 $(document).ready(function(){
-    var carouselList = $('#carousel-inner ul');
-    setInterval(changeSlide, 3000); 
+    var currentIndex = 0,
+        slides = $('#carousel-inner ul li'),
+        slideAmount = slides.length;
     
-    function changeSlide(){
-        carouselList.animate({'marginLeft':-400}, 500, moveFirstSlide);
-    };
+        function changeSlides() {
+            var slide = $('#carousel-inner ul li').eq(currentIndex);
+            slides.hide();
+            slide.css('display', 'inline-block');
+}
+    var autoChange = setInterval(function() {
+        currentIndex++;
+        if (currentIndex > slideAmount - 1) {
+            currentIndex = 0;
+}
+        changeSlides();
+    }, 3000);
     
-    function moveFirstSlide() {
-        var firstItem = carouselList.find("li:first");
-        var lastItem = carouselList.find("li:last");
-        lastItem.after(firstItem);
-        carouselList.css({marginLeft: 0});
-    };
-    
-    $('.nextLink').click(function(){
-        
-        carouselList.animate({'marginLeft':-400}, 500, moveFirstSlide);
-
-    function moveFirstSlide() {
-        var firstItem = carouselList.find("li:first");
-        var lastItem = carouselList.find("li:last");
-        lastItem.after(firstItem);
-        carouselList.css({marginLeft: 0});
-    };
-        
+    $('#carousel-outer .nextLink').click(function(){
+        clearInterval(autoChange);
+        currentIndex++;
+        if (currentIndex > slideAmount - 1){
+            currentIndex = 0;
+}
+        changeSlides();
 });
-    
-   //Previous nie dziala
-    
-    /*$('.previousLink').click(function(){
-        
-        carouselList.animate({'marginLeft': 400}, 500, moveFirstSlide);
-
-    function moveFirstSlide() {
-        var firstItem = carouselList.find("li:first");
-        var lastItem = carouselList.find("li:last");
-        lastItem.after(firstItem);
-        carouselList.css({marginLeft: 0});
-};
-        
-}); */ 
-    
-    $('button').each(function(index, elem){
+    $('#carousel-outer .previousLink').click(function(){
+        clearInterval(autoChange);
+        currentIndex--;
+        if (currentIndex < 0){
+            currentIndex = slideAmount - 1;
+}
+        changeSlides();
+});
+     $('button').each(function(index, elem){
+         
         $(elem).click(function(){
             $('.btn-active').removeClass('btn-active');
-            $(this).addClass('btn-active').removeClass('btn-inactive');
-           
+            $(this).addClass('btn-active').removeClass('btn-inactive'); 
+          
         });
         
     });
+    
 });
+    

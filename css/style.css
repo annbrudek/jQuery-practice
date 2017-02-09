@@ -22,6 +22,7 @@ li {
     height: 300px;
     list-style-type: none;
     float: left;
+    
 }
 
 .previousLink, .nextLink {
