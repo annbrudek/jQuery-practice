@@ -7,12 +7,12 @@ $(document).ready(function(){
             var slide = $('#carousel-inner ul li').eq(currentIndex);
             slides.hide();
             slide.css('display', 'inline-block');
-}
+        }
     var autoChange = setInterval(function() {
         currentIndex++;
         if (currentIndex > slideAmount - 1) {
             currentIndex = 0;
-}
+        }
         changeSlides();
     }, 3000);
     
@@ -21,26 +21,35 @@ $(document).ready(function(){
         currentIndex++;
         if (currentIndex > slideAmount - 1){
             currentIndex = 0;
-}
+        } 
         changeSlides();
-});
+    });
+    
     $('#carousel-outer .previousLink').click(function(){
         clearInterval(autoChange);
         currentIndex--;
         if (currentIndex < 0){
             currentIndex = slideAmount - 1;
-}
+        }
         changeSlides();
-});
+    });
+    
+    
      $('button').each(function(index, elem){
-         
         $(elem).click(function(){
             $('.btn-active').removeClass('btn-active');
-            $(this).addClass('btn-active').removeClass('btn-inactive'); 
-          
-        });
+            $(this).addClass('btn-active').removeClass('btn-inactive');
+            var bulletIndex = $('button').index(this);
+            clearInterval(autoChange);
+            currentIndex = bulletIndex;
+            bulletIndex++;
+            if (bulletIndex > slideAmount - 1){
+                bulletIndex = 0;
+            }       
+            changeSlides();
+        }); 
         
-    });
+    }); 
     
 });
     
